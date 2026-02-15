@@ -14,7 +14,7 @@ class TagController extends Controller
         return view("tag.index", ['tags' => $data], ["pagetitle" => 'Tags page' ]);
     }
 
-    function create(){
+    public function create(){
         Tag::create([ // creat post in database table
             'title' => 'Laravel',
         ]);
@@ -23,7 +23,7 @@ class TagController extends Controller
         return to_route('tag.index');
     }
 
-    function testManyToMany(){
+    public function testManyToMany(){
         // $post1 = Post::find(1);
         // $post4 = Post::find(4);
 
@@ -37,16 +37,16 @@ class TagController extends Controller
 
 
         // $tag = Tag::find(1);
-        // $tag = Tag::find(2);
+        $tag = Tag::find(2);
         // $tag = Tag::find(3);
 
         // $tag->posts()->attach([5]);
         // $tag->posts();
 
-        // return response()->json([
-            // 'tag' => $tag->title,
-            // 'posts' => $tag->posts
-        // ]);
+        return response()->json([
+            'tag' => $tag->title,
+            'posts' => $tag->posts
+        ]);
     }
 
     // function destroy(Post $post){

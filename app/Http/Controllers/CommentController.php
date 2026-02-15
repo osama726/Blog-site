@@ -13,12 +13,13 @@ class CommentController extends Controller
     }
 
     function create(){
-        Comment::create([ // creat Comment in database table
-            'author' => 'ahmed',
-            'content' => 'this comment for fifth post.',
-            'Post_id' => 5
-        ]); // for test
+        // Comment::create([ // creat Comment in database table
+        //     'author' => 'ahmed',
+        //     'content' => 'this comment for fifth post.',
+        //     'Post_id' => 5
+        // ]); // for test
 
+        Comment::factory(30)->create(); // create 7 comments using factory
         return redirect('/comments');
     }
 

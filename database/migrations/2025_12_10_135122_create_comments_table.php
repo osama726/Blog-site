@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('author');
             $table->string('content');
             $table->foreignId('post_id')->constrained('posts')->cascadeOnDelete(); // foreign key to posts table

@@ -14,11 +14,11 @@
                         $default = "text-gray-300 hover:bg-white/5 hover:text-white";
                     @endphp
                     <a href="{{ route('home') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('/') ? $current : $default }}">Home</a>
-                    <a href="{{ route('job.index') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('job') ? $current : $default }}">jobs</a>
-                    <a href="{{ route('post.index') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('post') ? $current : $default }}">Posts</a>
-                    <a href="{{ route('comment.index') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('comment') ? $current : $default }}">Comments</a>
+                    <a href="{{ route('job.index') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('jobs') ? $current : $default }}">jobs</a>
+                    <a href="{{ route('post.index') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('posts') ? $current : $default }}">Posts</a>
+                    <a href="{{ route('comment.index') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('comments') ? $current : $default }}">Comments</a>
                     <a href="{{ route('about') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('about') ? $current : $default }}">Abut</a>
-                    <a href="{{ route('contact') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('contact') ? $current : $default }}">Contact</a>
+                    <a href="{{ route('contact') }}" class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('contacts') ? $current : $default }}">Contact</a>
                 </div>
             </div>
         </div>

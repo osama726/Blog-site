@@ -22,4 +22,4 @@ When completed, the platform will feature:
 3. **AI Integration** to automatically extract and score data from uploaded resumes.
 
 ---
-*Stay tuned as I push more updates to "Al-Ameed" laptop and sync them here!* 💻
+*Follow us as I will be posting more updates!* 💻

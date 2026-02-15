@@ -5,9 +5,10 @@
         <p>
             Osama`s job {{ $jobs[0]['title'] }} <!-- ob-->
             <br>
-            @foreach ( $jobs as $job )
+            and his salary is  {{ $jobs[0]['salary'] }}
+            {{-- @foreach ( $jobs as $job )
                 and his salary is  {{ $job['salary'] }}
-            @endforeach
+            @endforeach --}}
         </p>
     </div>
 </x-layout.app>

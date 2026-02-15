@@ -22,10 +22,9 @@
 
     <body>
 
-
         <div class="min-h-full">
             {{-- Navbar --}}
-            <x-layout.nav />
+            <x-layout.nav /> {{-- <--دي بتاعت استدعاء الناف بار  --}}
 
             @if (isset($title))
                 <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
