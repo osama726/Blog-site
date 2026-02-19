@@ -6,6 +6,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 
 // Route::get('/', function () {
 //     return view('home/index');
@@ -19,23 +21,14 @@ use App\Http\Controllers\TagController;
 //     return view('contact');
 // });
 
-Route::get( '/' , [IndexController::class, 'index'] )->name('home');
+Route::get( '/' , IndexController::class)->name('home');
 
-Route::get('/about', [IndexController::class, 'about'])->name('about');
+Route::get('/about', AboutController::class)->name('about');
 
-Route::get('/contacts', [IndexController::class, 'contact'])->name('contact');
+Route::get('/contacts', ContactController::class)->name('contact');
 
 Route::get('/jobs', [JobController::class, 'index'])->name('job.index');
 
-Route::get('/posts', [PostController::class, 'index'])->name('post.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
-Route::delete('/posts/delete/{post}', [PostController::class, 'destroy'])->name('post.destroy');
-
-Route::get('/comments', [CommentController::class, 'index'])->name('comment.index');
-Route::get('/comments/create', [CommentController::class, 'create'])->name('comment.create');
-Route::get('/comments/{post}', [CommentController::class, 'show'])->name('comment.show');
-
-Route::get('/tags', [TagController::class, 'index'])->name('tag.index');
-Route::get('/tags/create', [TagController::class, 'create'])->name('tag.create');
-Route::get('/tags/test', [TagController::class, 'testManyToMany'])->name('tag.test');
+Route::resource('posts', PostController::class);
+Route::resource('/comments', CommentController::class);
+Route::resource('/tags', TagController::class);

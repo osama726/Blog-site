@@ -11,10 +11,10 @@
             <p style="font-weight: bold">{{ $comment->content }}</p>
         @endforeach
     @endforeach
-<hr>
-<hr>
-<hr>
+    <hr>
+    <hr>
+    <hr>
 
-{{ $posts->links() }}
+    {{ $posts->links() }}
         {{-- {{ $posts[0]->comments[0]->content }} --}}
 </x-layout.app>

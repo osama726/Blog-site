@@ -6,7 +6,9 @@
         <p>{{ $comment->content }}</p>
         {{-- <p>{{ $comment->post }}</p> --}}
         {{-- <a href="/post/{{ $comment->posts->id }}">{{ $comment->posts->title }}</a> --}}
-        <a href="{{ route('post.show', $comment->post->id) }}">{{ $comment->post->title }}</a>
+        <a href="{{ route('posts.show', $comment->post->id) }}">{{ $comment->post->title }}</a>
         <hr>
     @endforeach
+
+    {{ $comments->links() }}
 </x-layout.app>
