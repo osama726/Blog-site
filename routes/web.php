@@ -30,5 +30,6 @@ Route::get('/contacts', ContactController::class)->name('contact');
 Route::get('/jobs', [JobController::class, 'index'])->name('job.index');
 
 Route::resource('posts', PostController::class);
+// Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::resource('/comments', CommentController::class);
 Route::resource('/tags', TagController::class);

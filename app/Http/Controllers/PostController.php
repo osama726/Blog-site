@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -12,8 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data = Post::cursorPaginate(3); // get all posts from database
-        return view("post.index", ['posts' => $data], ["pagetitle" => 'Posts page' ]);
+        $data = Post::latest()->cursorPaginate(5); // get all posts from database
+        return view("post.index", ['posts' => $data, "pagetitle" => 'Posts page']);
     }
 
     /**
@@ -21,15 +22,31 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create', ["pagetitle" => 'Create Post' ] );
+        return view('post.create', ["pagetitle" => 'Create Post'] );
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        // @TODO this will be complete in the (FORMS) section
+        // print_r($request->all());
+        // $post = new Post();
+        // $post->title = $request->input('title');
+        // $post->content = $request->input('content');
+        // $post->author = $request->input('author');
+        // $post->published = $request->has('published');
+        // $post->save();
+
+        // Post::create([
+        //     'title' => $request->input('title'),
+        //     'content' => $request->input('content'),
+        //     'author' => $request->input('author'),
+        //     'published' => $request->has('published')
+        // ]);
+        Post::create($request->all());
+
+        return to_route('posts.index')->with('success', 'Post created successfully.');
     }
 
     /**
@@ -43,24 +60,32 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        return view('post.edit', ['post' => $post, "pagetitle" => 'Edit Post' ] );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+
+        // $post = Post::findOrFail($id);
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->author = $request->input('author');
+        $post->published = $request->has('published');
+        $post->save();
+        return to_route('posts.index')->with('success', 'Post updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        // @TODO: this will be complete in the (FORMS) section
+        $post->delete();
+        return to_route('posts.index')->with('success', 'Post deleted successfully.');
     }
 }

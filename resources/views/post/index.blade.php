@@ -1,20 +1,60 @@
 @section('title', $pagetitle )
-<x-layout.app :title="$pagetitle">
-    <h2>this is <strong>POSTS</strong> view</h2>
+<x-layout.app :title="$pagetitle" :postcreate="true">
+    @if(session('success'))
+        <div class="flex items-start gap-3 rounded-lg border border-green-300 bg-green-50 p-4 text-green-800">
+            {{ session('success') }}
+        </div>
+    @endif
+
 
     @foreach ($posts as $data)
+        <div class="flex justify-between items-center border-b border-gray-300 py-4">
+            <div>
+                <a href="{{ route('posts.show', $data->id) }}" style="font-size: 25px; font-weight: bold;">{{ $data->title }}</a>
+                <p style="font-size: 20px; margin-top: -8px;">{{ $data->author }}</p>
+            </div>
+            <div>
+                <a href="{{ route('posts.edit', $data->id) }}" class="text-blue-500 hover:text-gray-500">Edit</a>
+                <form action="{{ route('posts.destroy', $data->id) }}" method="POST" class="delete-form" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-red-500 hover:text-gray-500 cursor-pointer">Delete</button>
+                </form>
+            </div>
 
-        <p style="font-size: 25px; font-weight: bold;">{{ $data->title }}</p>
-        <p style="font-size: 20px">{{ $data->content }}</p>
-
-        @foreach ( $data->comments as $comment )
-            <p style="font-weight: bold">{{ $comment->content }}</p>
-        @endforeach
+        </div>
     @endforeach
-    <hr>
-    <hr>
-    <hr>
 
     {{ $posts->links() }}
-        {{-- {{ $posts[0]->comments[0]->content }} --}}
 </x-layout.app>
+
+<script>
+
+document.querySelectorAll('.delete-form').forEach(form => {
+
+    form.addEventListener('submit', function(e) {
+
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc2626',
+            cancelButtonColor: '#6b7280',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                form.submit();
+            }
+
+        });
+
+    });
+
+});
+
+</script>

@@ -24,6 +24,7 @@ class PostFactory extends Factory
             'id' => str::uuid()->toString(),
             'title' => $this->faker->sentence(),
             'content' => $this->faker->paragraph(3, true),
+            'author' => $this->faker->name(),
             'published' => $this->faker->boolean()
         ];
     }

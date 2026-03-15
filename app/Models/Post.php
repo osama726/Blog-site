@@ -14,7 +14,7 @@ class Post extends Model
     protected $keyType = 'string';
     public $incrementing = false;
     // protected $table = 'post'; // Specify custom table name if different from 'posts'
-    protected $fillable = [ 'title', 'content', 'published' ]; // Allow mass assignment for these fields
+    protected $fillable = [ 'title', 'content', 'author', 'published' ]; // Allow mass assignment for these fields
 
     protected $guarded = ['id']; // Prevent mass assignment for the 'id' field
 
