@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -34,16 +35,16 @@ class PostController extends Controller
         // $post = new Post();
         // $post->title = $request->input('title');
         // $post->content = $request->input('content');
-        // $post->author = $request->input('author');
         // $post->published = $request->has('published');
         // $post->save();
 
         // Post::create([
         //     'title' => $request->input('title'),
         //     'content' => $request->input('content'),
-        //     'author' => $request->input('author'),
         //     'published' => $request->has('published')
         // ]);
+
+        // dd($request->all());
         Post::create($request->all());
 
         return to_route('posts.index')->with('success', 'Post created successfully.');
@@ -62,6 +63,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+
+        // Gate::authorize('update', $post);
+
         return view('post.edit', ['post' => $post, "pagetitle" => 'Edit Post' ] );
     }
 
@@ -74,7 +78,6 @@ class PostController extends Controller
         // $post = Post::findOrFail($id);
         $post->title = $request->input('title');
         $post->content = $request->input('content');
-        $post->author = $request->input('author');
         $post->published = $request->has('published');
         $post->save();
         return to_route('posts.index')->with('success', 'Post updated successfully.');

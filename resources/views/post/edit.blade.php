@@ -16,9 +16,7 @@
         @section('title-value')
             value="{{ old('title', $post->title) }}"
         @endsection
-        @section('author-value')
-            value="{{ old('author', $post->author) }}"
-        @endsection
+
         @section('content-value'){{ old('content', $post->content) }}@endsection
         @section('published-value')
             {{ old('published') || ( !old() && $post->published ) ? 'checked' : '' }}

@@ -5,7 +5,7 @@
     use App\Http\Controllers\api\AuthController;
 
     Route::prefix('v1')->group(function () {
-        Route::apiResource('posts', PostController::class)->middleware('auth:api');
+        Route::apiResource('post', PostController::class)->middleware('auth:api');
 
         Route::prefix('auth')->group(function () {
             Route::post('login', [AuthController::class, 'login']);

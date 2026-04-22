@@ -13,7 +13,7 @@ class Comment extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
-    
+
     protected $fillable = ['author', 'content', 'Post_id'];
 
     protected $guarded = ['id'];

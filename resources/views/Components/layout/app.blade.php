@@ -37,11 +37,11 @@
                                 {{ $title }}
                             </h1>
 
-                            @isset($postcreate)
+                            @if(isset($postcreate) && $postcreate == true)
                                 <div >
                                     <a href="{{ route('posts.create') }}" class="rounded-md bg-indigo-900 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new post</a>
                                 </div>
-                            @endisset
+                            @endif
 
                         </div>
 

@@ -24,7 +24,6 @@ class PostRequest extends FormRequest
         return [
             'title' => 'bail|required|max:255',
             'content' => 'required|unique:posts,content,' . $this->input('id'),
-            'author' => 'required|min:2|max:10',
             'published' => 'boolean'
         ];
     }
@@ -33,8 +32,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title.required' => 'This field is required.',
-            'content.required' => 'This field is required.',
-            'author.required' => 'This field is required.'
+            'content.required' => 'This field is required.'
         ];
     }
 }
