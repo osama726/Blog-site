@@ -29,8 +29,8 @@ A full-featured, secure Blog Application built with **Laravel**. This platform p
 
 ## 📷 Screenshots
 
-![Login](public/build//assets/logIn.png)
-![Posts page](public/build//assets/posts.png)
-![Post show](public/build//assets/postAndComment.png)
+![Login](logIn.png)
+![Posts page](posts.png)
+![Post show](postAndComment.png)
 ---
 *Developed with focus on clean code and robust Laravel backend patterns.* 💻
